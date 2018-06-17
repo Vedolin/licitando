@@ -1,6 +1,4 @@
 import json
-import operator
-from collections import OrderedDict
 from fuzzywuzzy import fuzz
 
 min_rate = 95
@@ -62,4 +60,4 @@ for fornecedor in fornecedores:
                 result[similarity.fornecedor_email] = ocs_code
             else:
                 result[similarity.fornecedor_email].add(similarity.oc['OC'])
-print(json.dumps(result))
+print(json.dumps(result, cls=SetEncoder))
