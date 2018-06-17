@@ -16,11 +16,13 @@ for oc in ocs:
     if oc['PROCEDIMENTO'] == 'Pregão Eletrônico' and (oc['SITUACAO'] == 'EDITAL PUBLICADO' or oc['SITUACAO'] == 'AGUARDANDO RECEBIMENTO DE PROPOSTAS'):
         select_ocs.add(oc['OC'])
 
-save_ocs = []
-for oc in select_ocs:
-    url = "https://www.bec.sp.gov.br/BEC_API/API/pregaoM/NegociacaoItemOC/0000/{}".format(oc)
-    headers = {}
-    response = requests.request("GET", url, headers=headers)
-    save_ocs.append(json.loads(response.text))
-    print(json.loads(response.text))
-save_json_file(save_ocs, 'ocs_full_data', 'json')
+print(len(select_ocs))
+
+# save_ocs = []
+# for oc in select_ocs:
+#     url = "https://www.bec.sp.gov.br/BEC_API/API/pregaoM/NegociacaoItemOC/0000/{}".format(oc)
+#     headers = {}
+#     response = requests.request("GET", url, headers=headers)
+#     save_ocs.append(json.loads(response.text))
+#     print(json.loads(response.text))
+# save_json_file(save_ocs, 'ocs_full_data', 'json')
